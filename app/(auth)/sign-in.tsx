@@ -60,6 +60,7 @@ const SignIn = () => {
           <InputField
             label="Password"
             placeholder="Enter password"
+            autoCapitalize="none"
             icon={icons.lock}
             secureTextEntry={true}
             value={form.password}

@@ -56,11 +56,11 @@ const SignUp = () => {
       if (signUpAttempt.status === "complete") {
         await fetchAPI("/(api)/user", {
           method: "POST",
-          body: {
+          body: JSON.stringify({
             name: form.name,
             email: form.email,
             clerkId: signUpAttempt.createdSessionId,
-          },
+          }),
         });
 
         await setActive({ session: signUpAttempt.createdSessionId });
@@ -76,7 +76,7 @@ const SignUp = () => {
       setVerification({
         ...verification,
         error: err.errors[0].longMessage,
-        state: "failed",
+        state: "pending",
       });
     }
   };
