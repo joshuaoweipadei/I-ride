@@ -131,18 +131,25 @@ const Home = () => {
   const [hasPermission, setHasPermission] = useState<boolean>(true);
 
   const handleSignOut = () => {};
-  const handleDestinationPress = async () => {};
+  const handleDestinationPress = async (location: {
+    latitude: number;
+    longitude: number;
+    address: string;
+  }) => {
+    setDestinationLocation(location);
+
+    router.push("/(root)/find-ride");
+  };
 
   useEffect(() => {
     const requestLocation = async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== "granted") {
-        alert("Location permission denied");
         setHasPermission(false);
         return;
       }
 
-      let location = await Location.getCurrentPositionAsync();
+      let location = await Location.getCurrentPositionAsync({});
 
       const address = await Location.reverseGeocodeAsync({
         latitude: location.coords?.latitude!,
