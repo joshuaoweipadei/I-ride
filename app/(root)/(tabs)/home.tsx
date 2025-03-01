@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useUser } from "@clerk/clerk-expo";
+import { router } from "expo-router";
 import * as Location from "expo-location";
 import {
   View,

@@ -84,8 +84,6 @@ const Map = () => {
     }
   }, []);
 
-  console.log(markers);
-
   return (
     <MapView
       provider={PROVIDER_DEFAULT}
