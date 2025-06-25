@@ -12,9 +12,11 @@ import Map from "@/components/Map";
 const RideLayout = ({
   title,
   children,
+  snapPoints,
 }: {
   title: string;
   children: ReactNode;
+  snapPoints?: string[];
 }) => {
   const bottomSheetRef = useRef<BottomSheet>(null);
 
@@ -40,10 +42,14 @@ const RideLayout = ({
           <Map />
         </View>
 
-        <BottomSheet ref={bottomSheetRef} snapPoints={["40%", "85%"]} index={0}>
-          <BottomSheetScrollView style={{ flex: 1, padding: 20 }}>
+        <BottomSheet
+          ref={bottomSheetRef}
+          snapPoints={snapPoints || ["40%", "85%"]}
+          index={0}
+        >
+          <BottomSheetView style={{ flex: 1, padding: 20 }}>
             {children}
-          </BottomSheetScrollView>
+          </BottomSheetView>
         </BottomSheet>
       </View>
     </GestureHandlerRootView>

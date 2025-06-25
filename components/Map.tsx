@@ -4,6 +4,7 @@ import MapView, { Marker, PROVIDER_DEFAULT } from "react-native-maps";
 import { useDriverStore, useLocationStore } from "@/store";
 import { calculateRegion, generateMarkersFromData } from "@/lib/map";
 import { icons } from "@/constants";
+import { MarkerData } from "@/types/type";
 
 const drivers = [
   {
@@ -70,7 +71,8 @@ const Map = () => {
   });
 
   useEffect(() => {
-    console.log(userLatitude, userLongitude, "latlong");
+    setDrivers(drivers as MarkerData[]);
+
     if (Array.isArray(drivers)) {
       if (!userLatitude || !userLongitude) return;
 
